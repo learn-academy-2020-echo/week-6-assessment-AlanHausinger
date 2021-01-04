@@ -8,6 +8,24 @@ var people = [
   { name: "zaphod beeblebrox", occupation: "president of the galaxy" },
   { name: "arthur dent", occupation: "radio employee" }
 ]
+
+
+const objects = (array) => {
+  let firstLetterCapitalized = array.map(value => {
+// // Now, because each name has a first and a last name (and there is no comma so it's only one object) we have to split our array in order to map through it, and capitalized both the firt and last name.
+let splitThoseNames = value.name.split(" ")
+
+ return splitThoseNames.map(value => value.charAt(0).toUpperCase()
+ + value.substring(1)).join(" ") 
+ + ` is a ${value.occupation}.`
+})
+// return the whole thing
+return firstLetterCapitalized
+}
+console.log(objects(people));
+
+
+
 // Expected output example: "Ford Prefect is a hitchhiker." "Zaphod Beeblebrox is a president of the galaxy." "Arthus Dent is a radio employee."
 
 
@@ -21,7 +39,21 @@ var testingArray1 = [23, "Heyyyy!", 45, -9, 0, "Yo", false]
 var testingArray2 = [5, "Hola", 43, -34, "greetings", true]
 // Expected output: [ 2, 1, -1 ]
 
+// Start by creating a function that takes in array of mixed data. 
 
+const gimmeTheRemainder = (array) => {
+
+// We are probably going to filter first in order to only extract the numbers from the mixed data array.  
+
+    let onlyNumbs = array.filter(numbers => typeof numbers == "number")
+    return onlyNumbs.map(numbers => numbers % 3)
+
+  // Now we want to map at over our array of numbers and use %3 to get the remainder of each number.
+
+  }
+
+   console.log(gimmeTheRemainder(testingArray1))
+  
 
 
 
@@ -30,3 +62,12 @@ var testingArray2 = [5, "Hola", 43, -34, "greetings", true]
 var testingArray3 = [3, 7, "hi", 10, 3, "hello", 4, "hi"]
 var testingArray4 = [7, "hi", 3, 1, "hi", 4, "hello", 4, 7]
 // Expected output: [ 3, 7, "hi", 10, "hello", 4, 1 ]
+
+// Start by creating a function that takes in two arrays and returns one array with no duplicates
+const noDuples = (array1, array2) => {
+  // Now create a local variable that can hold our new array with no duplicates.
+  // Use concat to merge both arrays.
+  let array3 = array1.concat(array2)
+  return [...new Set(array3)]
+}
+console.log(noDuples(testingArray3, testingArray4))
